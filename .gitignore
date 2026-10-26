@@ -10,9 +10,10 @@ build/
 
 .env
 
-# Generated data and models (rebuilt by the CLI; cached responses are published as a release asset)
-data/
-models/
+# Generated data and models (rebuilt by the CLI; cached responses are published as a release
+# asset). Anchored to the repo root so they don't also match the src/costrouter/data package.
+/data/
+/models/
 
 # Internal working notes, not published
 docs/
