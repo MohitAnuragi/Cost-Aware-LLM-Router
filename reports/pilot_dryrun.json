@@ -1,0 +1,81 @@
+{
+  "summary": [
+    {
+      "dataset": "gsm8k",
+      "role": "large",
+      "n": 100,
+      "accuracy": 0.84,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 95.66,
+      "mean_out_tokens": 150.0,
+      "mean_latency_ms": 929.4394435662533,
+      "mean_cost_usd": 0.0001749394
+    },
+    {
+      "dataset": "gsm8k",
+      "role": "small",
+      "n": 100,
+      "accuracy": 0.61,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 95.66,
+      "mean_out_tokens": 150.0,
+      "mean_latency_ms": 373.56171957800535,
+      "mean_cost_usd": 1.6783e-05
+    },
+    {
+      "dataset": "mmlu",
+      "role": "large",
+      "n": 100,
+      "accuracy": 0.89,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 126.61,
+      "mean_out_tokens": 60.0,
+      "mean_latency_ms": 916.1581352676778,
+      "mean_cost_usd": 0.0001220999
+    },
+    {
+      "dataset": "mmlu",
+      "role": "small",
+      "n": 100,
+      "accuracy": 0.67,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 126.61,
+      "mean_out_tokens": 60.0,
+      "mean_latency_ms": 355.5190548484274,
+      "mean_cost_usd": 1.11305e-05
+    }
+  ],
+  "gaps_pts": {
+    "gsm8k": 23.0,
+    "mmlu": 21.999999999999996,
+    "overall": 22.499999999999996
+  },
+  "outcomes": {
+    "both_correct (easy)": 128,
+    "only_large (hard)": 45,
+    "only_small": 0,
+    "both_wrong": 27
+  },
+  "projection": [
+    {
+      "role": "small",
+      "model": "fake-small",
+      "requests": 9087,
+      "tokens": 1929385,
+      "hours_at_rate_limit": 0.0,
+      "days_at_daily_limit": null,
+      "list_cost_usd": 0.12350979599999998
+    },
+    {
+      "role": "large",
+      "model": "fake-large",
+      "requests": 3029,
+      "tokens": 643128,
+      "hours_at_rate_limit": 0.0,
+      "days_at_daily_limit": null,
+      "list_cost_usd": 0.4395358976
+    }
+  ],
+  "gate_passed": true,
+  "min_gap_pts": 15.0
+}

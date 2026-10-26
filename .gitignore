@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+.env
+
+# Generated data and models (rebuilt by the CLI; cached responses are published as a release asset)
+data/
+models/
+
+# Internal working notes, not published
+docs/
+PROJECT_LOG.md

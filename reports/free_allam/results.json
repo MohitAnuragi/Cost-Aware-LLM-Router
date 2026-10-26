@@ -1,0 +1,607 @@
+{
+  "meta": {
+    "generated": "2026-10-26",
+    "profile": "free_allam",
+    "small": "allam-2-7b",
+    "large": "openai/gpt-oss-120b",
+    "prices_as_of": "2026-10-24",
+    "n_queries": 3029
+  },
+  "n": {
+    "train": 404,
+    "val": 59,
+    "test": 72
+  },
+  "best_router": "logreg_handcrafted",
+  "tau": 0.7139730505109877,
+  "presets": {
+    "quality": 0.7139730505109877,
+    "balanced": 0.5130417519729652,
+    "budget_30": 0.4560534555524079,
+    "budget_70": 0.6363955055521101
+  },
+  "router_latency_ms": {
+    "p50": 54.89780000061728,
+    "p95": 85.37462499807583,
+    "cpu_load_pct": 20.0
+  },
+  "headline": {
+    "accuracy": 0.9166666666666666,
+    "delta_vs_large_pts": -1.388888888888895,
+    "cost_usd": 0.00920326,
+    "cost_saved": 0.07775573192239849,
+    "pct_large": 0.8472222222222222,
+    "hard_misroute": 0.04,
+    "over_escalation": 0.8095238095238095,
+    "pgr": 0.9599999999999999,
+    "latency_p50_ms": 910.2292500001568,
+    "latency_p95_ms": 2379.0441900010605,
+    "latency_mean_ms": 1034.6607041673603
+  },
+  "headline_ci95": {
+    "accuracy": [
+      0.8472222222222222,
+      0.9722222222222222
+    ],
+    "delta_vs_large_pts": [
+      -4.166666666666674,
+      0.0
+    ],
+    "cost_saved": [
+      0.03451415197144495,
+      0.13371232791522647
+    ],
+    "hard_misroute": [
+      0.0,
+      0.13043478260869565
+    ],
+    "pct_large": [
+      0.7638888888888888,
+      0.9305555555555556
+    ]
+  },
+  "mcnemar_vs_large": {
+    "a_only": 0,
+    "b_only": 1,
+    "p_value": 1.0
+  },
+  "baselines_test": {
+    "always_small": {
+      "accuracy": 0.5833333333333334,
+      "delta_vs_large_pts": -34.72222222222222,
+      "cost_usd": 0.0009590400000000001,
+      "cost_saved": 0.9038961038961039,
+      "pct_large": 0.0,
+      "hard_misroute": 1.0,
+      "over_escalation": 0.0,
+      "pgr": 0.0,
+      "latency_p50_ms": 246.9075500011968,
+      "latency_p95_ms": 622.6058300007026,
+      "latency_mean_ms": 349.16078472231976
+    },
+    "always_large": {
+      "accuracy": 0.9305555555555556,
+      "delta_vs_large_pts": 0.0,
+      "cost_usd": 0.009979199999999999,
+      "cost_saved": 0.0,
+      "pct_large": 1.0,
+      "hard_misroute": 0.0,
+      "over_escalation": 1.0,
+      "pgr": 1.0,
+      "latency_p50_ms": 855.3314499995395,
+      "latency_p95_ms": 1927.9861099996206,
+      "latency_mean_ms": 1007.8721555556361
+    },
+    "oracle": {
+      "accuracy": 0.9305555555555556,
+      "delta_vs_large_pts": 0.0,
+      "cost_usd": 0.0045767099999999995,
+      "cost_saved": 0.5413750601250602,
+      "pct_large": 0.3472222222222222,
+      "hard_misroute": 0.0,
+      "over_escalation": 0.0,
+      "pgr": 1.0,
+      "latency_p50_ms": 383.2886000000144,
+      "latency_p95_ms": 1548.4187349998142,
+      "latency_mean_ms": 590.902106944567
+    }
+  },
+  "routers": {
+    "random": {
+      "cv_diagnostics": {
+        "roc_auc": 0.4382952370228578,
+        "brier": 0.35187565106604024,
+        "ece": 0.28293184459635445
+      },
+      "cv_apgr": 0.4630116959064328,
+      "test_apgr": 0.4781999999999999,
+      "test_cpt50": 0.59,
+      "test_cpt80": 0.87,
+      "tau": 0.96750973243421,
+      "cv_at_tau": {
+        "accuracy": 0.8941684665226782,
+        "delta_vs_large_pts": -1.295896328293733,
+        "cost_usd": 0.07044611999999999,
+        "cost_saved": 0.030050537907561292,
+        "pct_large": 0.9676025917926566,
+        "hard_misroute": 0.03314917127071823,
+        "over_escalation": 0.963855421686747,
+        "pgr": 0.9649122807017545,
+        "latency_p50_ms": 905.4496999997355,
+        "latency_p95_ms": 3802.886590000523,
+        "latency_mean_ms": 1705.7989898488256
+      },
+      "test_at_tau": {
+        "accuracy": 0.9027777777777778,
+        "delta_vs_large_pts": -2.777777777777779,
+        "cost_usd": 0.00949326,
+        "cost_saved": 0.04869528619528607,
+        "pct_large": 0.9583333333333334,
+        "hard_misroute": 0.08,
+        "over_escalation": 0.9761904761904762,
+        "pgr": 0.9199999999999999,
+        "latency_p50_ms": 841.2052000003314,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 977.5326111112008
+      },
+      "best_params": {}
+    },
+    "length": {
+      "cv_diagnostics": {
+        "roc_auc": 0.5304395150696243,
+        "brier": 0.31865911916345374,
+        "ece": 0.2259231817730534
+      },
+      "cv_apgr": 0.5192105263157896,
+      "test_apgr": 0.5213999999999999,
+      "test_cpt50": 0.45,
+      "test_cpt80": 0.75,
+      "tau": 0.8827356305092154,
+      "cv_at_tau": {
+        "accuracy": 0.8876889848812095,
+        "delta_vs_large_pts": -1.943844492440605,
+        "cost_usd": 0.06692255999999999,
+        "cost_saved": 0.07856527692584125,
+        "pct_large": 0.8790496760259179,
+        "hard_misroute": 0.0718232044198895,
+        "over_escalation": 0.8514056224899599,
+        "pgr": 0.9473684210526315,
+        "latency_p50_ms": 883.5541000007652,
+        "latency_p95_ms": 3684.659789998837,
+        "latency_mean_ms": 1624.8885149028233
+      },
+      "test_at_tau": {
+        "accuracy": 0.8888888888888888,
+        "delta_vs_large_pts": -4.166666666666674,
+        "cost_usd": 0.009424099999999998,
+        "cost_saved": 0.05562570145903489,
+        "pct_large": 0.9027777777777778,
+        "hard_misroute": 0.12,
+        "over_escalation": 0.9285714285714286,
+        "pgr": 0.8799999999999998,
+        "latency_p50_ms": 841.2052000003314,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 956.7991333334602
+      },
+      "best_params": {}
+    },
+    "logreg_handcrafted": {
+      "cv_diagnostics": {
+        "roc_auc": 0.6445595465976054,
+        "brier": 0.2335029774425823,
+        "ece": 0.040745200620318604
+      },
+      "cv_apgr": 0.6003801169590645,
+      "test_apgr": 0.5837999999999999,
+      "test_cpt50": 0.35000000000000003,
+      "test_cpt80": 0.67,
+      "tau": 0.7139730505109877,
+      "cv_at_tau": {
+        "accuracy": 0.8898488120950324,
+        "delta_vs_large_pts": -1.7278617710583144,
+        "cost_usd": 0.06782295999999999,
+        "cost_saved": 0.06616796539657566,
+        "pct_large": 0.8898488120950324,
+        "hard_misroute": 0.055248618784530384,
+        "over_escalation": 0.8594377510040161,
+        "pgr": 0.9532163742690059,
+        "latency_p50_ms": 889.1540999993595,
+        "latency_p95_ms": 3893.4911800013633,
+        "latency_mean_ms": 1683.107217278637
+      },
+      "test_at_tau": {
+        "accuracy": 0.9166666666666666,
+        "delta_vs_large_pts": -1.388888888888895,
+        "cost_usd": 0.00920326,
+        "cost_saved": 0.07775573192239849,
+        "pct_large": 0.8472222222222222,
+        "hard_misroute": 0.04,
+        "over_escalation": 0.8095238095238095,
+        "pgr": 0.9599999999999999,
+        "latency_p50_ms": 855.3314499995395,
+        "latency_p95_ms": 2324.1463900004433,
+        "latency_mean_ms": 979.7629041667429
+      },
+      "best_params": {
+        "clf__C": 0.01
+      },
+      "test_apgr_mean": 0.5837999999999999,
+      "test_apgr_std": 0.0
+    },
+    "logreg_embedding": {
+      "cv_diagnostics": {
+        "roc_auc": 0.5778440866268814,
+        "brier": 0.24668535424468638,
+        "ece": 0.0246348716800475
+      },
+      "cv_apgr": 0.5727192982456142,
+      "test_apgr": 0.5897999999999999,
+      "test_cpt50": 0.38,
+      "test_cpt80": 0.63,
+      "tau": 0.684246154220291,
+      "cv_at_tau": {
+        "accuracy": 0.8920086393088553,
+        "delta_vs_large_pts": -1.5118790496760237,
+        "cost_usd": 0.06943289999999999,
+        "cost_saved": 0.04400123091920338,
+        "pct_large": 0.9395248380129589,
+        "hard_misroute": 0.04419889502762431,
+        "over_escalation": 0.9437751004016064,
+        "pgr": 0.9590643274853802,
+        "latency_p50_ms": 894.6856999991724,
+        "latency_p95_ms": 3509.2146799997863,
+        "latency_mean_ms": 1629.8731287257222
+      },
+      "test_at_tau": {
+        "accuracy": 0.9305555555555556,
+        "delta_vs_large_pts": 0.0,
+        "cost_usd": 0.009979199999999999,
+        "cost_saved": 0.0,
+        "pct_large": 1.0,
+        "hard_misroute": 0.0,
+        "over_escalation": 1.0,
+        "pgr": 1.0,
+        "latency_p50_ms": 855.3314499995395,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 1007.8721555556361
+      },
+      "best_params": {
+        "clf__C": 0.01
+      },
+      "test_apgr_mean": 0.5897999999999999,
+      "test_apgr_std": 0.0
+    },
+    "knn_embedding": {
+      "cv_diagnostics": {
+        "roc_auc": 0.6165221634200353,
+        "brier": 0.24331043061623517,
+        "ece": 0.09664348043085749
+      },
+      "cv_apgr": 0.597982456140351,
+      "test_apgr": 0.6113999999999999,
+      "test_cpt50": 0.3,
+      "test_cpt80": 0.64,
+      "tau": 0.7212848771413976,
+      "cv_at_tau": {
+        "accuracy": 0.8898488120950324,
+        "delta_vs_large_pts": -1.7278617710583144,
+        "cost_usd": 0.06887161,
+        "cost_saved": 0.05172944836507343,
+        "pct_large": 0.9287257019438445,
+        "hard_misroute": 0.049723756906077346,
+        "over_escalation": 0.9317269076305221,
+        "pgr": 0.9532163742690059,
+        "latency_p50_ms": 892.8554000012809,
+        "latency_p95_ms": 3514.8924199995236,
+        "latency_mean_ms": 1659.667214254874
+      },
+      "test_at_tau": {
+        "accuracy": 0.9305555555555556,
+        "delta_vs_large_pts": 0.0,
+        "cost_usd": 0.00972026,
+        "cost_saved": 0.025947971781305035,
+        "pct_large": 0.9583333333333334,
+        "hard_misroute": 0.0,
+        "over_escalation": 0.9523809523809523,
+        "pgr": 1.0,
+        "latency_p50_ms": 855.3314499995395,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 990.2618069445452
+      },
+      "best_params": {
+        "n_neighbors": 50
+      },
+      "test_apgr_mean": 0.5940666666666666,
+      "test_apgr_std": 0.024513035081133668
+    },
+    "gbm_both": {
+      "cv_diagnostics": {
+        "roc_auc": 0.6093720677100927,
+        "brier": 0.24122120117234416,
+        "ece": 0.05973652075742318
+      },
+      "cv_apgr": 0.5806140350877195,
+      "test_apgr": 0.6069999999999999,
+      "test_cpt50": 0.37,
+      "test_cpt80": 0.6,
+      "tau": 0.6433643001280597,
+      "cv_at_tau": {
+        "accuracy": 0.8876889848812095,
+        "delta_vs_large_pts": -1.943844492440605,
+        "cost_usd": 0.06678668,
+        "cost_saved": 0.0804361639655975,
+        "pct_large": 0.8984881209503239,
+        "hard_misroute": 0.06077348066298342,
+        "over_escalation": 0.8795180722891566,
+        "pgr": 0.9473684210526315,
+        "latency_p50_ms": 888.5455999989063,
+        "latency_p95_ms": 3514.8924199995236,
+        "latency_mean_ms": 1645.0911712743277
+      },
+      "test_at_tau": {
+        "accuracy": 0.9305555555555556,
+        "delta_vs_large_pts": 0.0,
+        "cost_usd": 0.00866319,
+        "cost_saved": 0.13187530062530062,
+        "pct_large": 0.7916666666666666,
+        "hard_misroute": 0.0,
+        "over_escalation": 0.6904761904761905,
+        "pgr": 1.0,
+        "latency_p50_ms": 803.7936500004434,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 897.4519777779177
+      },
+      "best_params": {
+        "clf__learning_rate": 0.05,
+        "clf__max_depth": 3
+      },
+      "test_apgr_mean": 0.6048666666666666,
+      "test_apgr_std": 0.0030169889330625846
+    },
+    "mlp_embedding": {
+      "cv_diagnostics": {
+        "roc_auc": 0.5963480088578613,
+        "brier": 0.24841396902324941,
+        "ece": 0.038363224299482176
+      },
+      "cv_apgr": 0.5902046783625732,
+      "test_apgr": 0.6129999999999999,
+      "test_cpt50": 0.31,
+      "test_cpt80": 0.66,
+      "tau": 0.7200292461214631,
+      "cv_at_tau": {
+        "accuracy": 0.8898488120950324,
+        "delta_vs_large_pts": -1.7278617710583144,
+        "cost_usd": 0.06848182,
+        "cost_saved": 0.05709633870380337,
+        "pct_large": 0.9287257019438445,
+        "hard_misroute": 0.049723756906077346,
+        "over_escalation": 0.9196787148594378,
+        "pgr": 0.9532163742690059,
+        "latency_p50_ms": 888.5455999989063,
+        "latency_p95_ms": 3339.9728799999116,
+        "latency_mean_ms": 1475.619123110172
+      },
+      "test_at_tau": {
+        "accuracy": 0.9305555555555556,
+        "delta_vs_large_pts": 0.0,
+        "cost_usd": 0.009979199999999999,
+        "cost_saved": 0.0,
+        "pct_large": 1.0,
+        "hard_misroute": 0.0,
+        "over_escalation": 1.0,
+        "pgr": 1.0,
+        "latency_p50_ms": 855.3314499995395,
+        "latency_p95_ms": 1927.9861099996206,
+        "latency_mean_ms": 1007.8721555556361
+      },
+      "best_params": {
+        "alpha": 1.0
+      },
+      "test_apgr_mean": 0.6007333333333332,
+      "test_apgr_std": 0.0088262235538322
+    }
+  },
+  "cascade": {
+    "available": true,
+    "n_dev": 167,
+    "n_test": 72,
+    "covers_full_test": true,
+    "tau_low": 0.7480280861050633,
+    "tau_high": 0.7480280861050633,
+    "hybrid": {
+      "accuracy": 0.9166666666666666,
+      "delta_vs_large_pts": -1.388888888888895,
+      "cost_usd": 0.009489289999999997,
+      "cost_saved": 0.0490931136764472,
+      "pct_large": 0.9027777777777778,
+      "hard_misroute": 0.04,
+      "over_escalation": 0.9047619047619048,
+      "pgr": 0.9599999999999999,
+      "latency_p50_ms": 910.2292500001568,
+      "latency_p95_ms": 1982.8839100002378,
+      "latency_mean_ms": 1016.8510013895684,
+      "tau_low": 0.7480280861050633,
+      "tau_high": 0.7480280861050633,
+      "pct_checked": 0.0,
+      "pct_escalated": 0.0
+    },
+    "router_only": {
+      "accuracy": 0.9166666666666666,
+      "delta_vs_large_pts": -1.388888888888895,
+      "cost_usd": 0.00920326,
+      "cost_saved": 0.07775573192239849,
+      "pct_large": 0.8472222222222222,
+      "hard_misroute": 0.04,
+      "over_escalation": 0.8095238095238095,
+      "pgr": 0.9599999999999999,
+      "latency_p50_ms": 910.2292500001568,
+      "latency_p95_ms": 2379.0441900010605,
+      "latency_mean_ms": 1034.6607041673603,
+      "tau_low": 0.7139730505109877,
+      "tau_high": 0.7139730505109877,
+      "pct_checked": 0.0,
+      "pct_escalated": 0.0
+    },
+    "cascade_only": {
+      "accuracy": 0.6944444444444444,
+      "delta_vs_large_pts": -23.611111111111114,
+      "cost_usd": 0.005325959999999999,
+      "cost_saved": 0.4662938912938913,
+      "pct_large": 0.13888888888888884,
+      "hard_misroute": 0.68,
+      "over_escalation": 0.023809523809523808,
+      "pgr": 0.31999999999999984,
+      "latency_p50_ms": 721.3206500009619,
+      "latency_p95_ms": 2726.5518250003897,
+      "latency_mean_ms": 1010.8397291673757,
+      "tau_low": -Infinity,
+      "tau_high": Infinity,
+      "pct_checked": 1.0,
+      "pct_escalated": 0.1388888888888889
+    },
+    "always_large": {
+      "accuracy": 0.9305555555555556,
+      "delta_vs_large_pts": 0.0,
+      "cost_usd": 0.009979199999999999,
+      "cost_saved": 0.0,
+      "pct_large": 1.0,
+      "hard_misroute": 0.0,
+      "over_escalation": 1.0,
+      "pgr": 1.0,
+      "latency_p50_ms": 855.3314499995395,
+      "latency_p95_ms": 1927.9861099996206,
+      "latency_mean_ms": 1007.8721555556361
+    },
+    "check_quality": {
+      "precision": 0.9,
+      "recall": 0.3,
+      "fail_rate": 0.1388888888888889
+    }
+  },
+  "price_sensitivity": {
+    "small_price": "$0.075 / $0.3",
+    "cost_saved": 0.07333002645502629,
+    "oracle_cost_saved": 0.46526274651274646
+  },
+  "per_dataset": {
+    "gsm8k": {
+      "n": 30,
+      "at_tau": {
+        "accuracy": 1.0,
+        "delta_vs_large_pts": 0.0,
+        "cost_usd": 0.00517155,
+        "cost_saved": 0.0,
+        "pct_large": 1.0,
+        "hard_misroute": 0.0,
+        "over_escalation": 1.0,
+        "pgr": 1.0,
+        "latency_p50_ms": 1041.9699499998387,
+        "latency_p95_ms": 2377.1128100005612,
+        "latency_mean_ms": 1201.4192300000407
+      },
+      "always_small_acc": 0.5333333333333333,
+      "always_large_acc": 1.0,
+      "apgr": 0.635
+    },
+    "mmlu": {
+      "n": 42,
+      "at_tau": {
+        "accuracy": 0.8571428571428571,
+        "delta_vs_large_pts": -2.3809523809523836,
+        "cost_usd": 0.004031709999999999,
+        "cost_saved": 0.16139694029307483,
+        "pct_large": 0.7380952380952381,
+        "hard_misroute": 0.09090909090909091,
+        "over_escalation": 0.6923076923076923,
+        "pgr": 0.909090909090909,
+        "latency_p50_ms": 707.9250000006141,
+        "latency_p95_ms": 1791.6401649994434,
+        "latency_mean_ms": 821.4369571429588
+      },
+      "always_small_acc": 0.6190476190476191,
+      "always_large_acc": 0.8809523809523809,
+      "apgr": 0.5449999999999999
+    }
+  },
+  "accuracy_budgets_test": {
+    "1": {
+      "tau": 0.7517068223425672,
+      "accuracy": 0.9166666666666666,
+      "delta_vs_large_pts": -1.388888888888895,
+      "cost_usd": 0.009489289999999997,
+      "cost_saved": 0.0490931136764472,
+      "pct_large": 0.9027777777777778,
+      "hard_misroute": 0.04,
+      "over_escalation": 0.9047619047619048,
+      "pgr": 0.9599999999999999,
+      "latency_p50_ms": 855.3314499995395,
+      "latency_p95_ms": 1927.9861099996206,
+      "latency_mean_ms": 961.9532013889511
+    },
+    "2": {
+      "tau": 0.7139730505109877,
+      "accuracy": 0.9166666666666666,
+      "delta_vs_large_pts": -1.388888888888895,
+      "cost_usd": 0.00920326,
+      "cost_saved": 0.07775573192239849,
+      "pct_large": 0.8472222222222222,
+      "hard_misroute": 0.04,
+      "over_escalation": 0.8095238095238095,
+      "pgr": 0.9599999999999999,
+      "latency_p50_ms": 855.3314499995395,
+      "latency_p95_ms": 2324.1463900004433,
+      "latency_mean_ms": 979.7629041667429
+    },
+    "5": {
+      "tau": 0.6632292386445627,
+      "accuracy": 0.9166666666666666,
+      "delta_vs_large_pts": -1.388888888888895,
+      "cost_usd": 0.008704879999999998,
+      "cost_saved": 0.12769761103094446,
+      "pct_large": 0.7638888888888888,
+      "hard_misroute": 0.04,
+      "over_escalation": 0.6666666666666666,
+      "pgr": 0.9599999999999999,
+      "latency_p50_ms": 827.1120500003235,
+      "latency_p95_ms": 2324.1463900004433,
+      "latency_mean_ms": 931.7607138890102
+    },
+    "10": {
+      "tau": 0.5372966837844858,
+      "accuracy": 0.7777777777777778,
+      "delta_vs_large_pts": -15.277777777777779,
+      "cost_usd": 0.0070789,
+      "cost_saved": 0.2906345198011864,
+      "pct_large": 0.5277777777777778,
+      "hard_misroute": 0.44,
+      "over_escalation": 0.5,
+      "pgr": 0.5599999999999999,
+      "latency_p50_ms": 667.5170500002423,
+      "latency_p95_ms": 2157.056529999955,
+      "latency_mean_ms": 791.7351236112861
+    }
+  },
+  "generalisation": {
+    "gsm8k_to_mmlu": {
+      "n_train": 193,
+      "n_test": 42,
+      "apgr": 0.48590909090909096
+    },
+    "mmlu_to_gsm8k": {
+      "n_train": 211,
+      "n_test": 30,
+      "apgr": 0.5842857142857143
+    }
+  },
+  "worst_misroutes": [
+    {
+      "query_id": "mmlu-test-3702",
+      "dataset": "mmlu",
+      "subject": "high_school_government_and_politics",
+      "p_small": 0.7579814639194469,
+      "text": "The relative stability of American public policy is achieved largely through  A. cooperation between the two major political parties B. judicial activism C. the constitutional fragmentation of power D. affirmative action"
+    }
+  ],
+  "max_drop_pts": 2.0
+}

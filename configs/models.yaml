@@ -1,0 +1,91 @@
+# Model pairs ("profiles"). Prices are list prices in USD per 1M tokens. They drive the cost
+# model even when you run on a free tier, so "cost saved" is measured in real list-price dollars.
+#
+# Groq prices and free-tier limits from https://console.groq.com/docs/models and
+# https://console.groq.com/docs/rate-limits (checked 2026-10-24). Per-account limits were
+# confirmed from response headers; tokens/day is from the docs only.
+# Llama 3.1 8B / 3.3 70B are no longer offered on this account, so the free profiles use the
+# models it does have. The pilot compares the three free pairs; keep the one with the best gap.
+prices_as_of: "2026-10-24"
+active_profile: free_allam
+
+_groq: &groq
+  provider: openai_compat
+  base_url: https://api.groq.com/openai/v1
+  api_key_env: GROQ_API_KEY
+  temperature: 0.0
+  rpm: 30
+  concurrency: 4
+
+_gpt_oss_20b: &gpt_oss_20b
+  <<: *groq
+  name: openai/gpt-oss-20b
+  usd_in_per_m: 0.075
+  usd_out_per_m: 0.30
+  max_tokens: 2048           # reasoning tokens count toward max_tokens
+  extra_params: {reasoning_effort: low}
+  tpm: 8000
+  rpd: 1000
+  tpd: 200000
+
+_gpt_oss_120b: &gpt_oss_120b
+  <<: *groq
+  name: openai/gpt-oss-120b
+  usd_in_per_m: 0.15
+  usd_out_per_m: 0.60
+  max_tokens: 2048
+  extra_params: {reasoning_effort: medium}
+  tpm: 8000
+  rpd: 1000
+  tpd: 200000
+
+profiles:
+  # Chosen pair (pilot: +38.7 point gap, see reports/pairs.json). allam-2-7b has no published
+  # per-token price, so it is priced at the last published Groq price of its closest size
+  # match, llama-3.1-8b-instant ($0.05 / $0.08). The eval also reports savings under the
+  # conservative gpt-oss-20b price ($0.075 / $0.30).
+  free_allam:
+    small:
+      <<: *groq
+      name: allam-2-7b
+      usd_in_per_m: 0.05
+      usd_out_per_m: 0.08
+      max_tokens: 1024       # 4,096-token context window
+      tpm: 6000
+      rpd: 7000
+    large: *gpt_oss_120b
+
+  # Same model family at two sizes and reasoning levels; both officially priced (2x ratio).
+  free_oss:
+    small: *gpt_oss_20b
+    large: *gpt_oss_120b
+
+  # Biggest price ratio (about 11-13x): gpt-oss-20b vs Qwen 3.8 27B (Groq preview model).
+  free_qwen:
+    small: *gpt_oss_20b
+    large:
+      <<: *groq
+      name: qwen/qwen3.8-27b
+      usd_in_per_m: 0.80
+      usd_out_per_m: 4.00
+      max_tokens: 2048
+      tpm: 8000
+      rpd: 1000
+      tpd: 200000
+
+  # Offline: fake models with fixed skill levels. Exercises the whole pipeline with no API key.
+  dryrun:
+    small:
+      name: fake-small
+      provider: fake
+      usd_in_per_m: 0.05
+      usd_out_per_m: 0.08
+      skill: 0.65
+      fake_latency_ms: 350
+    large:
+      name: fake-large
+      provider: fake
+      usd_in_per_m: 0.59
+      usd_out_per_m: 0.79
+      skill: 0.88
+      fake_latency_ms: 900

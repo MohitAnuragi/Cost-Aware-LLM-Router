@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "costrouter"
+version = "0.1.0"
+description = "Cost-aware LLM router: send easy queries to a cheap model and hard ones to an expensive model."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.40",
+    "datasets>=2.20",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+    "pyyaml>=6.0",
+    "rich>=13.7",
+    "typer>=0.12",
+    # Compiled packages pinned to builds that load under Windows Smart App Control on the
+    # dev machine (newer, not-yet-reputed builds of pandas and pyarrow were blocked).
+    "pandas==3.0.6",
+    "pyarrow==24.0.0",
+    "scikit-learn==1.9.1",
+    "scipy==1.17.1",
+    "matplotlib==3.11.2",
+    # CPU-only torch: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+    "torch==2.14.1",
+    "sentence-transformers>=3.0",
+    "textstat>=0.7",
+    "fastapi>=0.110",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
+    "streamlit>=1.36",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.5", "mypy>=1.10", "types-PyYAML"]
+
+[project.scripts]
+router = "costrouter.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/costrouter"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

@@ -1,0 +1,81 @@
+{
+  "summary": [
+    {
+      "dataset": "gsm8k",
+      "role": "large",
+      "n": 89,
+      "accuracy": 1.0,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 105.98876404494382,
+      "mean_out_tokens": 298.3820224719101,
+      "mean_latency_ms": 63750.48096179766,
+      "mean_cost_usd": 0.0012783191011235954
+    },
+    {
+      "dataset": "gsm8k",
+      "role": "small",
+      "n": 100,
+      "accuracy": 0.97,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 160.09,
+      "mean_out_tokens": 158.84,
+      "mean_latency_ms": 1016.4108460000352,
+      "mean_cost_usd": 5.9658749999999995e-05
+    },
+    {
+      "dataset": "mmlu",
+      "role": "large",
+      "n": 53,
+      "accuracy": 0.8301886792452831,
+      "parse_fail_rate": 0.018867924528301886,
+      "mean_in_tokens": 142.58490566037736,
+      "mean_out_tokens": 406.1132075471698,
+      "mean_latency_ms": 52180.28354717003,
+      "mean_cost_usd": 0.0017385207547169809
+    },
+    {
+      "dataset": "mmlu",
+      "role": "small",
+      "n": 100,
+      "accuracy": 0.75,
+      "parse_fail_rate": 0.0,
+      "mean_in_tokens": 190.46,
+      "mean_out_tokens": 70.55,
+      "mean_latency_ms": 990.9044460001496,
+      "mean_cost_usd": 3.54495e-05
+    }
+  ],
+  "gaps_pts": {
+    "gsm8k": 3.3707865168539297,
+    "mmlu": 13.20754716981133,
+    "overall": 7.042253521126762
+  },
+  "outcomes": {
+    "both_correct (easy)": 121,
+    "only_large (hard)": 12,
+    "only_small": 2,
+    "both_wrong": 7
+  },
+  "projection": [
+    {
+      "role": "small",
+      "model": "openai/gpt-oss-20b",
+      "requests": 9087,
+      "tokens": 2600987,
+      "hours_at_rate_limit": 5.4187235625,
+      "days_at_daily_limit": 13.00493655,
+      "list_cost_usd": 0.41792560874999996
+    },
+    {
+      "role": "large",
+      "model": "qwen/qwen3.8-27b",
+      "requests": 3029,
+      "tokens": 1471638,
+      "hours_at_rate_limit": 3.0659142520846587,
+      "days_at_daily_limit": 7.358194205003181,
+      "list_cost_usd": 4.65897338494806
+    }
+  ],
+  "gate_passed": false,
+  "min_gap_pts": 15.0
+}
