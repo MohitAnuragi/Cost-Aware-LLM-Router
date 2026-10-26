@@ -60,6 +60,12 @@ select = ["E", "F", "I", "B", "UP", "SIM"]
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E501"]
 
+# Declare the package explicitly so import sorting is identical everywhere. Auto-detection
+# classifies `costrouter` as first-party locally but third-party in CI (where `pip install -e`
+# puts it in site-packages), which made CI's `ruff check` fail on already-sorted imports.
+[tool.ruff.lint.isort]
+known-first-party = ["costrouter"]
+
 [tool.mypy]
 python_version = "3.11"
 ignore_missing_imports = true
