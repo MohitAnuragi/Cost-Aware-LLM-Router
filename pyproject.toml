@@ -34,7 +34,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.5", "mypy>=1.10", "types-PyYAML"]
+# ruff is pinned (not >=) so CI lints with the exact version used locally; a newer ruff can
+# change import-sorting/format rules and fail CI on unchanged, already-clean code.
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff==0.17.2", "mypy>=1.10", "types-PyYAML"]
 
 [project.scripts]
 router = "costrouter.cli:app"
