@@ -8,14 +8,27 @@ import pandas as pd
 
 from costrouter.config import ModelConfig, Profile
 from costrouter.data.checkers import grade
-from costrouter.eval.cost import cost_usd
 from costrouter.data.prompts import TEMPLATE_VERSION
 from costrouter.data.schema import Query
+from costrouter.eval.cost import cost_usd
 from costrouter.llm.cache import ResponseCache
 
 RESPONSE_COLUMNS = [
-    "query_id", "dataset", "subject", "role", "model", "call_type", "sample_idx", "text",
-    "parsed", "correct", "gold", "input_tokens", "output_tokens", "latency_ms", "cost_usd",
+    "query_id",
+    "dataset",
+    "subject",
+    "role",
+    "model",
+    "call_type",
+    "sample_idx",
+    "text",
+    "parsed",
+    "correct",
+    "gold",
+    "input_tokens",
+    "output_tokens",
+    "latency_ms",
+    "cost_usd",
     "stop_reason",
 ]
 
@@ -37,7 +50,10 @@ def graded_records(
         return pd.DataFrame(columns=columns)
     df = pd.DataFrame(records).drop(columns=["role"])
     qdf = pd.DataFrame(
-        [{"query_id": q.id, "dataset": q.dataset, "subject": q.subject, "gold": q.gold} for q in queries]
+        [
+            {"query_id": q.id, "dataset": q.dataset, "subject": q.subject, "gold": q.gold}
+            for q in queries
+        ]
     )
     df = df.merge(qdf, on="query_id", how="inner")
     graded = [grade(d, t, g) for d, t, g in zip(df["dataset"], df["text"], df["gold"], strict=True)]
@@ -47,7 +63,9 @@ def graded_records(
         rows = df["model"] == name
         df.loc[rows, "cost_usd"] = [
             cost_usd(cfg, int(i), int(o))
-            for i, o in zip(df.loc[rows, "input_tokens"], df.loc[rows, "output_tokens"], strict=True)
+            for i, o in zip(
+                df.loc[rows, "input_tokens"], df.loc[rows, "output_tokens"], strict=True
+            )
         ]
     return df[columns]
 

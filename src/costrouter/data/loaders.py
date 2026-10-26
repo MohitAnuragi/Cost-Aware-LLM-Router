@@ -53,7 +53,9 @@ def load_mmlu() -> list[Query]:
     return [mmlu_row_to_query(row, i) for i, row in enumerate(ds)]
 
 
-def sample_per_subject(queries: Iterable[Query], per_subject: int, rng: random.Random) -> list[Query]:
+def sample_per_subject(
+    queries: Iterable[Query], per_subject: int, rng: random.Random
+) -> list[Query]:
     by_subject: dict[str | None, list[Query]] = defaultdict(list)
     for q in queries:
         by_subject[q.subject].append(q)

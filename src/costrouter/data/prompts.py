@@ -18,7 +18,7 @@ MMLU_TEMPLATE = """Answer the following multiple choice question.
 
 {choices}
 
-Think briefly, then on the last line write "Answer: " followed by only the letter (A, B, C, or D)."""
+Think briefly, then on the last line write "Answer: " followed by only the letter (A, B, C, or D)."""  # noqa: E501
 
 
 def render_gsm8k(question: str) -> str:
@@ -26,7 +26,9 @@ def render_gsm8k(question: str) -> str:
 
 
 def render_mmlu(question: str, choices: list[str]) -> str:
-    lines = "\n".join(f"{letter}. {choice}" for letter, choice in zip(LETTERS, choices, strict=True))
+    lines = "\n".join(
+        f"{letter}. {choice}" for letter, choice in zip(LETTERS, choices, strict=True)
+    )
     return MMLU_TEMPLATE.format(question=question.strip(), choices=lines)
 
 
